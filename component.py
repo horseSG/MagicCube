@@ -67,8 +67,6 @@ class Piece:
         self.Add_facets()       # set facets' verts
         if self.Type.value != len(self.Facets):     # check number of facets
             raise ValueError(f"Location: ({xid}, {yid}, {zid})\nPiece type: {self.Type}\nnumber of facets: {len(self.Facets)}")
-        self.Send = False
-        self.Recv = False
 
     def Add_facets(self):
         numFacets = self.Type.value
