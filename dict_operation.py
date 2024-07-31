@@ -20,4 +20,5 @@ OperateDict = {
         "lrM'": Rot_lrMidPrime,
         "fbM": Rot_fbMid,
         "fbM'": Rot_fbMidPrime,
+        "z90": [RotUpperPrime, Rot_udMidPrime, RotDown]    # right hand spiral
     }

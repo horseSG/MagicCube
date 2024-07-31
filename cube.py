@@ -17,12 +17,19 @@ class MagicCube:
                 tlayer.append(tcolumn)
             self.Pieces.append(tlayer)
 
-    def Operate(self, operateName):
-        operate = OperateDict[operateName]
+    def SingleOperation(self, operate):
         locPairs = self.OldNewLocation(operate.ChangeDim, operate.FixLayer, operate.RotMat)
         self.BackupColors()
         for slocPair in locPairs:
             self.Swap_PairColor(slocPair, operate)
+
+    def Operate(self, operateName):
+        operates = OperateDict[operateName]
+        if isinstance(operates, list):
+            for operate in operates:
+                self.SingleOperation(operate)
+        else:
+            self.SingleOperation(operates)
 
     def BackupColors(self):
         for xid in range(3):
@@ -62,9 +69,4 @@ class MagicCube:
                 cordNew[dimFix] = fixLayer[1] + 1
                 OldNewPair.append([cordOld, cordNew])
         return OldNewPair
-        
-
-
     
-
-
