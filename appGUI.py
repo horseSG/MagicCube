@@ -7,7 +7,10 @@ from matplotlib.figure import Figure
 
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d.art3d import Poly3DCollection
+# from mayavi import mlab
+
 from cube import *
+from plotLetter import GraphLetter as gl
 
 class ButtonAction:
     @classmethod
@@ -292,6 +295,14 @@ class CubeApp(QMainWindow):
                         poly3d = self.cube.Pieces[i][j][k].Facets[n].Verts
                         color = self.cube.Pieces[i][j][k].Facets[n].Color
                         self.ax.add_collection3d(Poly3DCollection([poly3d], facecolors=color, linewidths=1, edgecolors='k'))
+
+        # gl.plot_letter_F(self.ax, [2., -0.5, -0.5], [1, 2], 1)
+        self.ax.text(2.0, 0, 2, 'F', c='k', fontsize=20)
+        self.ax. text(-2.0, 0, 2, 'B', c='k', fontsize=20)
+        self.ax.text(0, 2.0, 2, 'R', c='k', fontsize=20)
+        self.ax.text(0, -2.0, 2, 'L', c='k', fontsize=20)
+        self.ax.text(0, 0, 3, 'U', c='k', fontsize=20)
+        self.ax.text(0, 0, -2, 'D', c='k', fontsize=20)
 
         # Set the aspect ratio to be equal
         self.ax.set_box_aspect([1, 1, 1])
